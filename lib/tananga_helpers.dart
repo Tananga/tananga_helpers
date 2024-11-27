@@ -3,6 +3,6 @@
 /// More dartdocs go here.
 library;
 
-export 'src/tananga_helpers_base.dart';
+export 'src/tananga_asyncvalue.dart';
 
 // TODO: Export any libraries intended for clients of this package.
