@@ -1,28 +1,28 @@
-abstract class Either<F, S> {
-  const Either();
+abstract class TanangaEither<F, S> {
+  const TanangaEither();
 
   T fold<T>(T Function(F failure) failureFn, T Function(S success) successFn);
 
-  bool get isFailure => this is Failure<F, S>;
-  bool get isSuccess => this is Success<F, S>;
+  bool get isFailure => this is TanangaFailure<F, S>;
+  bool get isSuccess => this is TanangaSuccess<F, S>;
 
-  Failure<F, S>? get asFailure => this is Failure<F, S> ? this as Failure<F, S> : null;
-  Success<F, S>? get asSuccess => this is Success<F, S> ? this as Success<F, S> : null;
+  TanangaFailure<F, S>? get asFailure => this is TanangaFailure<F, S> ? this as TanangaFailure<F, S> : null;
+  TanangaSuccess<F, S>? get asSuccess => this is TanangaSuccess<F, S> ? this as TanangaSuccess<F, S> : null;
 }
 
-class Failure<F, S> extends Either<F, S> {
+class TanangaFailure<F, S> extends TanangaEither<F, S> {
   final F value;
 
-  const Failure(this.value);
+  const TanangaFailure(this.value);
 
   @override
   T fold<T>(T Function(F failure) failureFn, T Function(S success) successFn) => failureFn(value);
 }
 
-class Success<F, S> extends Either<F, S> {
+class TanangaSuccess<F, S> extends TanangaEither<F, S> {
   final S value;
 
-  const Success(this.value);
+  const TanangaSuccess(this.value);
 
   @override
   T fold<T>(T Function(F failure) failureFn, T Function(S success) successFn) => successFn(value);
