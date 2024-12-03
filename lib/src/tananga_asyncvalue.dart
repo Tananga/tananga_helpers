@@ -10,6 +10,15 @@ abstract class TanangaAsyncValue<T> {
   /// Represents an error state with an exception and optional stack trace.
   const factory TanangaAsyncValue.error(Object error, [StackTrace? stackTrace]) = _TanangaAsyncError<T>;
 
+  /// If value contains data return it. If not return null
+  T? get value {
+    if (this.hasData) {
+      return (this as _TanangaAsyncData<T>).value;
+    } else {
+      return null;
+    }
+  }
+
   /// Checks if the current state is loading.
   bool get isLoading => this is _TanangaAsyncLoading<T>;
 
@@ -26,8 +35,7 @@ abstract class TanangaAsyncValue<T> {
   Object? get error => this is _TanangaAsyncError<T> ? (this as _TanangaAsyncError<T>).error : null;
 
   /// Returns the stack trace if available, otherwise null.
-  StackTrace? get stackTrace =>
-      this is _TanangaAsyncError<T> ? (this as _TanangaAsyncError<T>).stackTrace : null;
+  StackTrace? get stackTrace => this is _TanangaAsyncError<T> ? (this as _TanangaAsyncError<T>).stackTrace : null;
 
   /// Maps the current state to a new value.
   R when<R>({
