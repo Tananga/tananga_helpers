@@ -1,6 +1,6 @@
 name: tananga_helpers
 description: Package with helpful classes used in Tananga apps
-version: 0.0.2
+version: 0.0.3
 repository: https://github.com/Tananga/tananga_helpers
 
 environment:
