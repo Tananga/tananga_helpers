@@ -4,5 +4,6 @@
 library;
 
 export 'src/tananga_asyncvalue.dart';
+export 'src/tananga_either.dart';
 
 // TODO: Export any libraries intended for clients of this package.
